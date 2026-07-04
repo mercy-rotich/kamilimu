@@ -113,6 +113,83 @@ and uses mock data from `src/schools.json`.
 
 ---
 
+## Architecture
+
+End-to-end system, top to bottom: government audit data is parsed into a
+structured school-records database, served to citizens over three channels,
+and citizen feedback flows back down toward oversight bodies.
+
+```mermaid
+graph TD
+    subgraph input["Input layer — government data"]
+        OAG["OAG audit PDF, 100 pages [BUILT]"]
+        MOE["MoE ghost-school list 2025 [BUILT]"]
+        KEMIS["KEMIS + Treasury national data [PLANNED]"]
+    end
+
+    subgraph pipeline["Pipeline"]
+        OCR["OCR + AI parsing, DeepSeek [BUILT]"]
+        DB["School records DB, 4 states [BUILT]"]
+    end
+
+    subgraph channels["Channels"]
+        USSD["USSD gateway, Swahili + English [BUILT]"]
+        WA["WhatsApp + SMS proactive alerts [PLANNED]"]
+        WEB["Web dashboard, county maps [PLANNED]"]
+    end
+
+    USERS["BOM members + parents, any phone [BUILT]"]
+
+    subgraph feedback["Feedback flow"]
+        REPORTS["Anonymous report store [BUILT]"]
+        AGG["AI aggregation dashboard [PLANNED]"]
+        ESC["Escalation: OAG, county, civil society [PLANNED]"]
+    end
+
+    subgraph legend["Legend"]
+        L1["Built today"]
+        L2["Planned by Aug 18"]
+    end
+
+    OAG --> OCR
+    MOE --> OCR
+    KEMIS --> OCR
+    OCR -->|"structured findings JSON"| DB
+    DB --> USSD
+    DB --> WA
+    DB --> WEB
+    USSD --> USERS
+    WA --> USERS
+    WEB --> USERS
+    USERS --> REPORTS
+    REPORTS --> AGG
+    AGG --> ESC
+
+    classDef built fill:#0d9488,stroke:#0f766e,color:#ffffff
+    classDef planned fill:#f97316,stroke:#c2410c,color:#ffffff
+    class OAG,MOE,OCR,DB,USSD,USERS,REPORTS,L1 built
+    class KEMIS,WA,WEB,AGG,ESC,L2 planned
+```
+
+The school records database classifies every school into one of four
+states — **matched**, **shortfall**, **excess**, or **ghost** — from its
+allocated / disbursed / verified figures. The anonymous report store keeps
+typed reports only (no personal data), and a status loop shows reporters
+their school is "under review".
+
+## User journey
+
+1. **Mzee Adan**, BOM chair, hears on the radio (or at a baraza) that
+   capitation funds have been released.
+2. He dials `*384*XX#` on his basic phone — no internet, no app.
+3. He selects his school and sees **allocated vs disbursed vs status**,
+   in Swahili.
+4. He confirms receipt — or reports a discrepancy, **fully anonymously**.
+5. On his next dial, the school shows **"Under review"** — his report
+   visibly counted.
+
+---
+
 ## Approach & Architecture
 
 A single-file Flask app handles Africa's Talking's USSD callback. Because
