@@ -28,7 +28,7 @@
       "allocated": 2780500,
       "disbursed": 2780500,
       "verified": false,
-      "source": "MoE_verification_2025"
+      "source": "illustrative_mock"
     },
     {
       "id": 5,
@@ -72,7 +72,7 @@
       "allocated": 994000,
       "disbursed": 994000,
       "verified": false,
-      "source": "MoE_verification_2025"
+      "source": "illustrative_mock"
     },
     {
       "id": 11,
@@ -81,25 +81,7 @@
       "allocated": 3002940,
       "disbursed": 3002940,
       "verified": false,
-      "source": "MoE_verification_2025"
-    },
-    {
-      "id": 12,
-      "name": "Loiwat High School",
-      "county": "Baringo",
-      "allocated": 3336600,
-      "disbursed": 3336600,
-      "verified": false,
-      "source": "MoE_verification_2025"
-    },
-    {
-      "id": 13,
-      "name": "Maji Mazuri Mixed Secondary School",
-      "county": "Baringo",
-      "allocated": 2224400,
-      "disbursed": 2224400,
-      "verified": false,
-      "source": "MoE_verification_2025"
+      "source": "illustrative_mock"
     }
   ]
 }

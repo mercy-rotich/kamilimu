@@ -9,10 +9,11 @@
 
 | Name | Role | GitHub |
 |------|------|--------|
-| [Full Name] | [Role, e.g. Backend] | [@handle] |
+| Mercy Cherotich | Systems & AI | mercy-rotich |
+|Phenny Mwaisaka  |Research & Product |Mwaisaks |
 
-**Team Name:** [Insert Team Name]
-**University:** [Insert University Name]
+**Team Name:** Dira
+**University:** Meru University of science and technology
 
 ---
 
@@ -20,38 +21,60 @@
 
 ### Problem Statement
 
-Parents, teachers, and community members in rural Kenya have no accessible
-way to verify whether their school actually received its allocated
-government capitation funds, or whether the school is even a verified
-institution — leaving "ghost school" fraud and funding shortfalls
-undetected until an audit surfaces it, years later.
+Boards of Management (BOMs) and parents of public schools in Kenya's
+marginalized counties have no way to verify whether their school received
+its allocated government capitation — or whether schools receiving funds
+in their name even exist. The 2025 Auditor-General Special Audit found
+Ksh 3.7 billion disbursed to 33 non-existent schools and a Ksh 117 billion
+capitation shortfall, with discrepancies spanning 32 counties. The
+Ministry's subsequent verification named ghost schools county by county —
+including Bisanavi, Eldara and Kambi Otha in Isiolo, and Loiwat High and
+Maji Mazuri Mixed in Baringo — and found 87,000 ghost learners. Fraud at
+this scale persisted for four audit years because the one group that can
+physically verify a school — its own community — has no channel into the
+records.
 
 ### Target User
 
 | Dimension | Detail |
 |-----------|--------|
-| **Primary user** | A parent, teacher, or community member in Isiolo County, Kenya |
-| **Tech comfort** | Comfortable dialling USSD codes daily for M-Pesa; no smartphone or data required |
-| **Language** | Swahili and English |
-| **Current workflow** | Has no way to check capitation records short of a physical visit to the county education office |
+| **Primary user** | Board of Management (BOM) member of a public school — statutory oversight mandate under the Basic Education Act; one board per school |
+| **Secondary beneficiaries** | Parents and community members |
+| **Pilot context** | Isiolo County — 3 ghost schools named in the Ministry's 2025 verification; pastoralist mobile schools make it the hardest verification test |
+| **Tech comfort** | Dials USSD daily for M-Pesa; basic phone, no data bundle |
+| **Language** | Swahili and English today; Borana, Somali, Samburu, Turkana on the roadmap (community-validated) |
+| **Current workflow** | No option short of a physical visit to the county education office — and even there, per-school disbursement records are not public |
 
 ### The Specific Gap
 
-1. **What's already there:** Auditor-General audit reports; Ministry of Education capitation disbursement records.
-2. **Why it falls short:** Published as lengthy English PDFs, months or years after disbursement, requiring a desktop browser and advanced literacy.
-3. **The gap we fill:** Instant, bilingual (Swahili/English) capitation verification over USSD — no internet, no smartphone, no PDFs — with a built-in anonymous reporting loop.
+1. **What exists:** the OAG Special Audit (published as a 100-page
+   *scanned* PDF — no searchable text) and NEMIS/KEMIS (internal,
+   login-only government systems).
+2. **Why it falls short:** the audit's per-school details are deferred to
+   Annexures 35–38, which are not included in the published document —
+   we verified this by running our own OCR pipeline over every page. The
+   new KEMIS system (rolling out since January 2026) fixes the
+   government's data problem but remains government-facing.
+3. **The gap we fill:** no Kenyan civic-tech tool delivers school-level
+   capitation verification for ghost-school checks via USSD/SMS to
+   offline BOM members. Existing platforms (Mzalendo, PesaYetu) are
+   web-based and county-level. DIRA is the citizen-facing verification
+   layer: instant, bilingual, any phone — with an anonymous reporting
+   loop back to oversight bodies.
 
 Full breakdown: [`docs/problem-statement.md`](docs/problem-statement.md)
 
 ### Why It Matters
 
-When rural citizens can't verify how capitation funds were disbursed to
-their school, "ghost schools" and misallocation go unnoticed until a formal
-audit — often years later. Closing this information gap restores a basic
-democratic feedback mechanism: informed citizens can flag discrepancies the
-moment they suspect something is wrong, not after the money is long gone.
-
----
+Capitation is computed from enrollment data no citizen can see or dispute,
+so falsifying a registry entry carries near-zero detection risk. The theft
+ran for four consecutive audit years before one special audit exposed it.
+DIRA inverts the oversight model: the 11 million learners' communities
+become a continuous, distributed verification layer — confirming honest
+disbursements, flagging discrepancies the moment funds land, and
+operationalizing Article 35 (access to information) in service of
+Article 43 (the right to education). Detection by the community, in
+term time — not by one audit, years late.
 
 ## Run Instructions
 
