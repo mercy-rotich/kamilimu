@@ -115,92 +115,32 @@ and uses mock data from `src/schools.json`.
 
 ## Architecture
 
-How it works, in one line: **audit reports go in at the top — accountability
-comes out at the bottom.**
-
 ```mermaid
 graph TD
-    DATA["📄 Government audit reports<br/>Auditor-General + Ministry of Education"]
-    AI["🤖 AI reads the PDFs into a<br/>school-by-school funding database"]
-    USSD["📱 Dial *384*XX# on any phone<br/>Swahili or English — no internet needed"]
-    PEOPLE["👨‍👩‍👧 Parents & school boards see:<br/>money allocated vs money received"]
-    REPORT["🚨 Something wrong? Report it —<br/>100% anonymous"]
-    ACTION["⚖️ Reports escalated to the<br/>Auditor-General & county oversight"]
-    ALERTS["🔔 WhatsApp/SMS alerts:<br/>'Your school received Ksh X'"]
+    GOV["Government documents — audit reports, funding records"]
+    AI["AI reads them — scanned pages become school records"]
+    DB["One database of truth — allocated, received, verified per school"]
+    PHONE["Any phone — USSD today; WhatsApp, SMS, web dashboard planned"]
+    COMMUNITY["Community verifies — confirms or reports, anonymously"]
+    OAG["Patterns go to the Auditor-General"]
 
-    DATA --> AI
-    AI --> USSD
-    USSD --> PEOPLE
-    PEOPLE --> REPORT
-    REPORT --> ACTION
-    AI -.-> ALERTS
-    ALERTS -.-> PEOPLE
+    GOV --> AI
+    AI --> DB
+    DB --> PHONE
+    PHONE --> COMMUNITY
+    COMMUNITY --> OAG
 
+    LB["Built today"]
+    LP["Planned by Aug 18"]
+    LB ~~~ LP
+
+    classDef gray fill:#6b7280,stroke:#4b5563,color:#ffffff
     classDef built fill:#0d9488,stroke:#0f766e,color:#ffffff
     classDef planned fill:#f97316,stroke:#c2410c,color:#ffffff
-    class DATA,AI,USSD,PEOPLE,REPORT built
-    class ACTION,ALERTS planned
+    class GOV gray
+    class AI,DB,PHONE,COMMUNITY,LB built
+    class OAG,LP planned
 ```
-
-🟢 **Teal = working today.** 🟠 **Orange = planned by August 18.**
-
-<details>
-<summary><strong>Detailed technical architecture</strong> (click to expand)</summary>
-
-```mermaid
-graph TD
-    subgraph input["Input layer — government data"]
-        OAG["OAG audit PDF, 100 pages [BUILT]"]
-        MOE["MoE ghost-school list 2025 [BUILT]"]
-        KEMIS["KEMIS + Treasury national data [PLANNED]"]
-    end
-
-    subgraph pipeline["Pipeline"]
-        OCR["OCR + AI parsing, DeepSeek [BUILT]"]
-        DB["School records DB, 4 states [BUILT]"]
-    end
-
-    subgraph channels["Channels"]
-        USSD["USSD gateway, Swahili + English [BUILT]"]
-        WA["WhatsApp + SMS proactive alerts [PLANNED]"]
-        WEB["Web dashboard, county maps [PLANNED]"]
-    end
-
-    USERS["BOM members + parents, any phone [BUILT]"]
-
-    subgraph feedback["Feedback flow"]
-        REPORTS["Anonymous report store [BUILT]"]
-        AGG["AI aggregation dashboard [PLANNED]"]
-        ESC["Escalation: OAG, county, civil society [PLANNED]"]
-    end
-
-    OAG --> OCR
-    MOE --> OCR
-    KEMIS --> OCR
-    OCR -->|"structured findings JSON"| DB
-    DB --> USSD
-    DB --> WA
-    DB --> WEB
-    USSD --> USERS
-    WA --> USERS
-    WEB --> USERS
-    USERS --> REPORTS
-    REPORTS --> AGG
-    AGG --> ESC
-
-    classDef built fill:#0d9488,stroke:#0f766e,color:#ffffff
-    classDef planned fill:#f97316,stroke:#c2410c,color:#ffffff
-    class OAG,MOE,OCR,DB,USSD,USERS,REPORTS built
-    class KEMIS,WA,WEB,AGG,ESC planned
-```
-
-The school records database classifies every school into one of four
-states — **matched**, **shortfall**, **excess**, or **ghost** — from its
-allocated / disbursed / verified figures. The anonymous report store keeps
-typed reports only (no personal data), and a status loop shows reporters
-their school is "under review".
-
-</details>
 
 ## User journey
 
