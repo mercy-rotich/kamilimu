@@ -138,33 +138,9 @@ and uses mock data from `src/schools.json`.
 
 ## Architecture
 
-```mermaid
-graph TD
-    GOV["Government documents — audit reports, funding records"]
-    AI["AI reads them — scanned pages become school records"]
-    DB["One database of truth — allocated, received, verified per school"]
-    PHONE["Any phone — USSD today; WhatsApp, SMS, web dashboard planned"]
-    COMMUNITY["Community verifies — confirms or reports, anonymously"]
-    OAG["Patterns go to the Auditor-General"]
+## Architecture
 
-    GOV --> AI
-    AI --> DB
-    DB --> PHONE
-    PHONE --> COMMUNITY
-    COMMUNITY --> OAG
-
-    LB["Built today"]
-    LP["Planned by Aug 18"]
-    LB ~~~ LP
-
-    classDef gray fill:#6b7280,stroke:#4b5563,color:#ffffff
-    classDef built fill:#0d9488,stroke:#0f766e,color:#ffffff
-    classDef planned fill:#f97316,stroke:#c2410c,color:#ffffff
-    class GOV gray
-    class AI,DB,PHONE,COMMUNITY,LB built
-    class OAG,LP planned
-```
-
+![DIRA end-to-end architecture — teal = built today, orange = planned by Aug 18](docs/architecture.png)
 ## User journey
 
 ```mermaid
