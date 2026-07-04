@@ -170,22 +170,24 @@ USSD is stateless, the app replays the full input path on every request to
 reconstruct where the user is in the menu — which is what makes "0. Back"
 work at any level without a database or session store.
 
-```
-[Feature phone] --dial *384*XXXX#--> [Africa's Talking Gateway]
-                                            |
-                                            v
-                                    [ngrok tunnel] --> [Flask /ussd route]
-                                            |
-                                            v
-                              [schools.json lookup + state logic]
-                            (GHOST / MATCHED / SHORTFALL / EXCESS)
-                                            |
-                                            v
-                    [CON/END response]  <-------------+
-                                            |
-                                            v
-                        [reports.json]  (anonymous discrepancy log,
-                                          no phone number stored)
+```mermaid
+graph LR
+    PHONE["📱 Feature phone<br/>dials *384*XXXX#"]
+    AT["Africa's Talking<br/>USSD gateway"]
+    FLASK["Flask /ussd route<br/>(via ngrok)"]
+    LOGIC["schools.json lookup<br/>MATCHED · SHORTFALL ·<br/>EXCESS · GHOST"]
+    REPORTS[("reports.json<br/>anonymous log,<br/>no phone number")]
+
+    PHONE --> AT
+    AT --> FLASK
+    FLASK --> LOGIC
+    LOGIC -.->|"CON/END screen"| PHONE
+    LOGIC --> REPORTS
+
+    classDef external fill:#6b7280,stroke:#4b5563,color:#ffffff
+    classDef app fill:#0d9488,stroke:#0f766e,color:#ffffff
+    class PHONE,AT external
+    class FLASK,LOGIC,REPORTS app
 ```
 
 Each school's capitation record is classified into one of four states from
