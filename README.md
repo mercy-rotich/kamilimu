@@ -115,9 +115,37 @@ and uses mock data from `src/schools.json`.
 
 ## Architecture
 
-End-to-end system, top to bottom: government audit data is parsed into a
-structured school-records database, served to citizens over three channels,
-and citizen feedback flows back down toward oversight bodies.
+How it works, in one line: **audit reports go in at the top — accountability
+comes out at the bottom.**
+
+```mermaid
+graph TD
+    DATA["📄 Government audit reports<br/>Auditor-General + Ministry of Education"]
+    AI["🤖 AI reads the PDFs into a<br/>school-by-school funding database"]
+    USSD["📱 Dial *384*XX# on any phone<br/>Swahili or English — no internet needed"]
+    PEOPLE["👨‍👩‍👧 Parents & school boards see:<br/>money allocated vs money received"]
+    REPORT["🚨 Something wrong? Report it —<br/>100% anonymous"]
+    ACTION["⚖️ Reports escalated to the<br/>Auditor-General & county oversight"]
+    ALERTS["🔔 WhatsApp/SMS alerts:<br/>'Your school received Ksh X'"]
+
+    DATA --> AI
+    AI --> USSD
+    USSD --> PEOPLE
+    PEOPLE --> REPORT
+    REPORT --> ACTION
+    AI -.-> ALERTS
+    ALERTS -.-> PEOPLE
+
+    classDef built fill:#0d9488,stroke:#0f766e,color:#ffffff
+    classDef planned fill:#f97316,stroke:#c2410c,color:#ffffff
+    class DATA,AI,USSD,PEOPLE,REPORT built
+    class ACTION,ALERTS planned
+```
+
+🟢 **Teal = working today.** 🟠 **Orange = planned by August 18.**
+
+<details>
+<summary><strong>Detailed technical architecture</strong> (click to expand)</summary>
 
 ```mermaid
 graph TD
@@ -146,11 +174,6 @@ graph TD
         ESC["Escalation: OAG, county, civil society [PLANNED]"]
     end
 
-    subgraph legend["Legend"]
-        L1["Built today"]
-        L2["Planned by Aug 18"]
-    end
-
     OAG --> OCR
     MOE --> OCR
     KEMIS --> OCR
@@ -167,8 +190,8 @@ graph TD
 
     classDef built fill:#0d9488,stroke:#0f766e,color:#ffffff
     classDef planned fill:#f97316,stroke:#c2410c,color:#ffffff
-    class OAG,MOE,OCR,DB,USSD,USERS,REPORTS,L1 built
-    class KEMIS,WA,WEB,AGG,ESC,L2 planned
+    class OAG,MOE,OCR,DB,USSD,USERS,REPORTS built
+    class KEMIS,WA,WEB,AGG,ESC planned
 ```
 
 The school records database classifies every school into one of four
@@ -176,6 +199,8 @@ states — **matched**, **shortfall**, **excess**, or **ghost** — from its
 allocated / disbursed / verified figures. The anonymous report store keeps
 typed reports only (no personal data), and a status loop shows reporters
 their school is "under review".
+
+</details>
 
 ## User journey
 
