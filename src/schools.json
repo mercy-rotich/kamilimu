@@ -1,0 +1,105 @@
+{
+  "schools": [
+    {
+      "id": 1,
+      "name": "Isiolo Boys High School",
+      "allocated": 8897600,
+      "disbursed": 8897600,
+      "verified": true
+    },
+    {
+      "id": 2,
+      "name": "Garbatulla Boys Secondary",
+      "allocated": 5561000,
+      "disbursed": 4448800,
+      "verified": true
+    },
+    {
+      "id": 3,
+      "name": "Oldonyiro Mixed Secondary",
+      "allocated": 3892700,
+      "disbursed": 4226360,
+      "verified": true
+    },
+    {
+      "id": 4,
+      "name": "Bisanavi Secondary School",
+      "county": "Isiolo",
+      "allocated": 2780500,
+      "disbursed": 2780500,
+      "verified": false,
+      "source": "MoE_verification_2025"
+    },
+    {
+      "id": 5,
+      "name": "Isiolo Girls High School",
+      "allocated": 8341500,
+      "disbursed": 8341500,
+      "verified": true
+    },
+    {
+      "id": 6,
+      "name": "Kinna Primary School",
+      "allocated": 852000,
+      "disbursed": 852000,
+      "verified": true
+    },
+    {
+      "id": 7,
+      "name": "Merti Secondary School",
+      "allocated": 4671240,
+      "disbursed": 3336600,
+      "verified": true
+    },
+    {
+      "id": 8,
+      "name": "Sericho Primary School",
+      "allocated": 639000,
+      "disbursed": 639000,
+      "verified": true
+    },
+    {
+      "id": 9,
+      "name": "Wabera Primary School",
+      "allocated": 710000,
+      "disbursed": 710000,
+      "verified": true
+    },
+    {
+      "id": 10,
+      "name": "Eldara Primary School",
+      "county": "Isiolo",
+      "allocated": 994000,
+      "disbursed": 994000,
+      "verified": false,
+      "source": "MoE_verification_2025"
+    },
+    {
+      "id": 11,
+      "name": "Kambi Otha Secondary",
+      "county": "Isiolo",
+      "allocated": 3002940,
+      "disbursed": 3002940,
+      "verified": false,
+      "source": "MoE_verification_2025"
+    },
+    {
+      "id": 12,
+      "name": "Loiwat High School",
+      "county": "Baringo",
+      "allocated": 3336600,
+      "disbursed": 3336600,
+      "verified": false,
+      "source": "MoE_verification_2025"
+    },
+    {
+      "id": 13,
+      "name": "Maji Mazuri Mixed Secondary School",
+      "county": "Baringo",
+      "allocated": 2224400,
+      "disbursed": 2224400,
+      "verified": false,
+      "source": "MoE_verification_2025"
+    }
+  ]
+}

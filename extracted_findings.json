@@ -1,0 +1,34 @@
+[
+  {
+    "finding": "14 schools received capitation but were not in CDE records or unknown to CDEs.",
+    "schools_affected": 14,
+    "amount_ksh": 16683215,
+    "county": null,
+    "annexure_ref": 35,
+    "verified_public": false
+  },
+  {
+    "finding": "6 schools that ceased operations received capitation.",
+    "schools_affected": 6,
+    "amount_ksh": 889348,
+    "county": null,
+    "annexure_ref": 36,
+    "verified_public": false
+  },
+  {
+    "finding": "13 schools had registered names differing from NEMIS names.",
+    "schools_affected": 13,
+    "amount_ksh": 11018253,
+    "county": null,
+    "annexure_ref": 37,
+    "verified_public": false
+  },
+  {
+    "finding": "71 schools classified in NEMIS as in different counties/sub-counties.",
+    "schools_affected": 71,
+    "amount_ksh": 55231890,
+    "county": null,
+    "annexure_ref": 38,
+    "verified_public": false
+  }
+]

@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables (contains secrets)
+.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data files (keep structure, ignore contents)
+data/*
+!data/.gitkeep
+
+# Runtime-generated anonymous reports (regenerated per run, not seed data)
+src/reports.json
+
+# Model files / large binaries
+*.pkl
+*.h5
+*.gguf
+*.bin
+models/
+
+# Logs
+*.log
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/

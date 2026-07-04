@@ -1,0 +1,10 @@
+# Core dependencies
+Flask>=2.2
+
+# Audit PDF extraction (parse_audit.py)
+# Note: also requires the `tesseract` binary installed system-wide
+# (not a pip package) — e.g. `sudo apt install tesseract-ocr`
+pypdfium2>=5.9
+pytesseract>=0.3
+requests>=2.28
+python-dotenv>=1.0
