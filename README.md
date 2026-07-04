@@ -144,14 +144,22 @@ graph TD
 
 ## User journey
 
-1. **Mzee Adan**, BOM chair, hears on the radio (or at a baraza) that
-   capitation funds have been released.
-2. He dials `*384*XX#` on his basic phone — no internet, no app.
-3. He selects his school and sees **allocated vs disbursed vs status**,
-   in Swahili.
-4. He confirms receipt — or reports a discrepancy, **fully anonymously**.
-5. On his next dial, the school shows **"Under review"** — his report
-   visibly counted.
+```mermaid
+graph TD
+    J1["1. Mzee Adan, BOM chair, hears on the radio<br/>capitation funds have been released"]
+    J2["2. Dials *384*XX# on his basic phone —<br/>no internet, no app"]
+    J3["3. Selects his school — sees allocated vs<br/>disbursed vs status, in Swahili"]
+    J4["4. Confirms receipt — or reports a<br/>discrepancy, fully anonymous"]
+    J5["5. Next dial shows 'Under review' —<br/>his report visibly counted"]
+
+    J1 --> J2
+    J2 --> J3
+    J3 --> J4
+    J4 --> J5
+
+    classDef step fill:#0d9488,stroke:#0f766e,color:#ffffff
+    class J1,J2,J3,J4,J5 step
+```
 
 ---
 
