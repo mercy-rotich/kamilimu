@@ -145,12 +145,12 @@ graph TD
 ## User journey
 
 ```mermaid
-graph TD
-    J1["1. Mzee Adan, BOM chair, hears on the radio<br/>capitation funds have been released"]
-    J2["2. Dials *384*XX# on his basic phone —<br/>no internet, no app"]
-    J3["3. Selects his school — sees allocated vs<br/>disbursed vs status, in Swahili"]
-    J4["4. Confirms receipt — or reports a<br/>discrepancy, fully anonymous"]
-    J5["5. Next dial shows 'Under review' —<br/>his report visibly counted"]
+graph LR
+    J1["1. Hears funds<br/>released<br/>(radio/baraza)"]
+    J2["2. Dials *384*XX#<br/>basic phone,<br/>no internet"]
+    J3["3. Sees his school's<br/>funding status<br/>in Swahili"]
+    J4["4. Confirms or<br/>reports —<br/>anonymous"]
+    J5["5. Next dial:<br/>'Under review' —<br/>report counted"]
 
     J1 --> J2
     J2 --> J3
