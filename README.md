@@ -146,7 +146,7 @@ graph TD
 
 ```mermaid
 graph LR
-    J1["1. Hears funds<br/>released<br/>(radio/baraza)"]
+    J1["1. Mzee Adani Hears funds<br/>released<br/>(radio/baraza)"]
     J2["2. Dials *384*XX#<br/>basic phone,<br/>no internet"]
     J3["3. Sees his school's<br/>funding status<br/>in Swahili"]
     J4["4. Confirms or<br/>reports —<br/>anonymous"]
