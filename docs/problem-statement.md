@@ -1,63 +1,96 @@
-# Problem Statement — Hakikisha Shule
+# Problem Statement — DIRA
 
 ## Background
 
-Kenya's capitation (per-learner government funding) is disbursed termly to
-public primary and secondary schools under the Free Primary Education (FPE)
-and Free Day Secondary Education (FDSE) programmes. The Auditor-General's
-reports have repeatedly flagged "ghost schools" — entities that received
-capitation disbursements despite not appearing in the Ministry of
-Education's verified institution registry — alongside cases of under- and
-over-disbursement relative to what was officially allocated. Isiolo County,
-like many arid and semi-arid counties, has limited last-mile oversight:
-parents, teachers, and community members have no direct, low-bandwidth way
-to check whether their school's funding record is legitimate.
+Kenya's capitation (per-learner government funding — Ksh 1,420/year
+primary, Ksh 22,244/year secondary) is disbursed termly to public schools
+under the Free Primary Education and Free Day Secondary Education
+programmes. The Auditor-General's 2025 Special Audit, covering financial
+years 2020/21–2023/24, exposed the scale of leakage: Ksh 3.7 billion
+disbursed to 33 non-existent "ghost schools," a Ksh 117 billion capitation
+shortfall against approved allocations, ghost learners in 723 of 1,039
+sampled schools, and discrepancies spanning 32 counties. The Ministry of
+Education's subsequent nationwide verification (covering ~53,000
+institutions and 11 million learners) named ghost schools county by
+county — including Bisanavi, Eldara and Kambi Otha in Isiolo County, and
+Loiwat High and Maji Mazuri Mixed in Baringo — and identified 87,000
+learners with no traceable presence in any institution.
+
+Capitation is computed from enrollment data held in closed government
+systems (NEMIS, now transitioning to KEMIS). No citizen can see or
+dispute the record their school's funding is based on — so falsifying a
+registry entry carries near-zero detection risk. The fraud ran for four
+consecutive audit years before a single special audit exposed it.
 
 ## The Problem
 
-Parents, teachers, and community members in rural Kenya have no accessible
-way to verify whether their school actually received its allocated
-capitation funds, or whether the school is even a verified institution —
-leaving fraud (ghost schools, shortfalls, unexplained excess disbursements)
-undetected until an audit surfaces it, years later.
+Boards of Management (BOMs) and parents of public schools in Kenya's
+marginalized counties have no way to verify whether their school received
+its allocated capitation — or whether schools receiving funds in their
+community's name even exist. The one group that can physically verify a
+school — its own community — has no channel into the records, leaving
+ghost schools, shortfalls, and unexplained excess disbursements
+undetected until an audit surfaces them, years later.
 
 ## Target User
 
-A parent or teacher in Isiolo County with a basic feature phone — no
-smartphone, no internet data — who is already comfortable with USSD menus
-(used daily for M-Pesa) but has no way to read a 200-page English audit PDF
-or navigate a web dashboard.
+**Primary user:** a Board of Management member of a public school —
+holder of a statutory oversight mandate under the Basic Education Act,
+one board per school. **Secondary beneficiaries:** parents and community
+members. Our pilot user lives in Isiolo County, dials USSD menus daily
+for M-Pesa on a basic feature phone, has no data bundle, and communicates
+in Swahili — while the records that determine his school's funding sit in
+a scanned English PDF and a login-only government portal.
 
 ## Current Alternatives & Their Shortcomings
 
-1. **Auditor-General reports** — published as lengthy English PDFs, often
-   years after the fact, requiring a desktop browser and advanced literacy.
-2. **County education office visits** — requires travel, time, and knowing
-   exactly who to ask.
-3. **No existing tool** lets an ordinary citizen check a specific school's
-   funding status in real time, from any phone, in their own language.
+1. **The Auditor-General's audit** — published as a 100-page *scanned*
+   PDF with no searchable text. Its per-school details are deferred to
+   Annexures 35–38, which are not included in the published document.
+   We verified this directly: our OCR pipeline processed every page —
+   the findings are aggregate only ("14 schools, Ksh 16,683,215 —
+   details in Annexure 35"). Even the audit of hidden schools hides
+   the schools.
+2. **NEMIS/KEMIS** — internal, credential-locked systems. KEMIS
+   (rolling out since January 2026) improves the government's own data
+   but remains government-facing, with no citizen verification channel.
+3. **Existing civic-tech** — Mzalendo (parliamentary monitoring) and
+   PesaYetu (county data) are web-based and aggregate-level. No Kenyan
+   civic-tech tool delivers school-level capitation verification via
+   USSD/SMS to offline BOM members and parents.
+4. **County education office visits** — travel, cost, and even then,
+   per-school disbursement records are not public.
 
 ## Our Approach
 
-Hakikisha Shule ("Verify the School" in Swahili) is a USSD application —
-works on any phone, no internet or smartphone required — that lets anyone
-dial a short code, pick their school from a list, and instantly see: the
-amount allocated vs. disbursed for the current term, whether the school is
-verified in county records, and — if funds don't match or the school
-doesn't exist — anonymously report the discrepancy on the spot. Reports
-accumulate against a school, so repeated flags surface a
-"Chini ya ukaguzi / Under review" tag on subsequent lookups, closing the
-loop between citizen and oversight body.
+DIRA ("vision" in Swahili) is a USSD application — any phone, no
+internet — that lets a BOM member or parent dial a short code, select
+their school, and instantly see: allocated vs. disbursed amounts for the
+term, and the school's verification status across four states (matched,
+shortfall, excess, ghost/unverified). If the record doesn't match the
+ground truth, they report the discrepancy on the spot — anonymously by
+design: no names or numbers stored. Reports accumulate per school;
+repeated flags surface a "Chini ya ukaguzi / Under review" tag on
+subsequent lookups, closing the loop between citizen and oversight. An
+AI pipeline (OCR + LLM extraction) converts the government's scanned
+documents into the structured per-school records the service queries —
+the capability that makes citizen-facing verification feasible at the
+scale of 53,000 schools. AI flags patterns; humans verify — protecting
+legitimate pastoralist mobile schools from ever being auto-declared
+ghosts.
 
 ## Impact Hypothesis
 
-If citizens can verify capitation records in under 30 seconds from any
-phone, in their own language, ghost-school and misallocation fraud becomes
-visible in near real time instead of surfacing years later in an audit —
-restoring a direct accountability feedback loop between rural communities
-and county education officials, and making it materially harder for funds
-to be siphoned through non-existent institutions.
+If a school's community can verify its capitation record in under 30
+seconds, in their own language, fraud becomes visible in term time
+rather than years later: communities confirm honest disbursements,
+dispute false ones, and patterns of discrepancy escalate to the
+Auditor-General and civil society. This operationalizes Article 35 of
+the Constitution (access to information) in service of Article 43 (the
+right to education) — converting 11 million learners' communities from
+passive victims of registry fraud into a continuous, distributed
+verification layer.
 
 ---
 
-*Part of the Mozilla Foundation × KamiLimu Democracy & AI Hackathon — July 4th, 2026*
+*Mozilla Foundation × KamiLimu — Democracy & AI Buildathon, July 4, 2026*
